@@ -40,9 +40,16 @@
     <reference name="root">
       <action method="setTemplate"><template>page/2columns-right.phtml</template></action>
       <action method="setHeaderTitle" translate="title" module="ffuenf_contact"><title>Contact Us</title></action>
+      <block type="page/html_breadcrumbs" name="breadcrumbs" as="breadcrumbs" ifconfig="ffuenf_contact/contact/breadcrumb"/>
     </reference>
     <reference name="content">
-      <block type="core/template" name="contactForm" template="ffuenf/contact/form.phtml"/>
+      <block type="core/template" name="contactForm" template="ffuenf/contact/form.phtml">
+        <block type="cms/block" name="contacts_prompt">
+          <action method="setBlockId">
+            <block_id>contacts_prompt</block_id>
+          </action>
+        </block>
+      </block>
     </reference>
   </contact_index_index>
 </layout>

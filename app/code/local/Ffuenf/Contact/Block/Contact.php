@@ -1,5 +1,4 @@
-<?xml version="1.0"?>
-<!--
+<?php
 /**
 * Magento
 *
@@ -25,13 +24,8 @@
 * @copyright   Copyright (c) 2014 ffuenf (http://www.ffuenf.de)
 * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
 */
--->
-<config>
-  <modules>
-    <Ffuenf_Contact>
-      <active>true</active>
-      <codePool>local</codePool>
-      <depends>Aoe_LayoutConditions</depends>
-    </Ffuenf_Contact>
-  </modules>
-</config>
+class Ffuenf_Contact_Block_Contacts extends Mage_Core_Block_Template {
+  public function getReasons() {
+    return explode('|', Mage::getStoreConfig('ffuenf_contact/reasons'));
+  }
+}

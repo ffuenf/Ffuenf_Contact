@@ -43,7 +43,24 @@ class Ffuenf_Contact_Model_Observer {
     $city = $request->getPost('city');
     $telephone = $request->getPost('telephone');
     $message = $request->getPost('message');
-    
     $request->setPost('comment', $message);
+  }
+  
+  /**
+   * event: controller_action_layout_render_before_ . $this->getFullActionName();
+   * in: Mage_Core_Controller_Varien_Action::renderLayout()
+   * 
+   * @param $event Varien_Event_Observer
+   * @return void
+   */
+  public function addRobotsTagToContacts(Varien_Event_Observer $event) {
+    $this->_setRobotsHeader($this->_helper()->getContactsRobots());
+    $this->_setCanonicalHeader($this->getUrl('contact'));
+    $breadcrumbs = $this->_getLayout()->getBlock('breadcrumbs');
+    if($this->_helper()->getContactsBreadcrumb() && $breadcrumbs) {
+      $title = Mage::helper('ffuenf_contact')->__('Contact Us');
+      $breadcrumbs->addCrumb('home', array('label'=>Mage::helper('cms')->__('Home'), 'title'=>Mage::helper('cms')->__('Go to Home Page'), 'link'=>Mage::getBaseUrl()));
+      $breadcrumbs->addCrumb('cms_page', array('label'=>$title, 'title'=>$title));
+    }
   }
 }

@@ -27,23 +27,23 @@
 */
 -->
 <config>
-    <acl>
-        <resources>
-            <admin>
+  <acl>
+    <resources>
+      <admin>
+        <children>
+          <system>
+            <children>
+              <config>
                 <children>
-                    <system>
-                        <children>
-                            <config>
-                                <children>
-                                    <ffuenf_contact translate="title" module="ffuenf_contact">
-                                        <title>Contacts Section</title>
-                                    </ffuenf_contact>
-                                </children>
-                            </config>
-                        </children>
-                    </system>
+                  <ffuenf_contact translate="title" module="ffuenf_contact">
+                    <title>Contacts Section</title>
+                  </ffuenf_contact>
                 </children>
-            </admin>
-        </resources>
-    </acl>
+              </config>
+            </children>
+          </system>
+        </children>
+      </admin>
+    </resources>
+  </acl>
 </config>

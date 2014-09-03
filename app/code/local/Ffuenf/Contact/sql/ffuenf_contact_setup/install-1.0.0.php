@@ -1,5 +1,4 @@
-<?xml version="1.0"?>
-<!--
+<?php
 /**
 * Magento
 *
@@ -25,13 +24,12 @@
 * @copyright   Copyright (c) 2014 ffuenf (http://www.ffuenf.de)
 * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
 */
--->
-<config>
-  <modules>
-    <Ffuenf_Contact>
-      <active>true</active>
-      <codePool>local</codePool>
-      <depends>Aoe_LayoutConditions</depends>
-    </Ffuenf_Contact>
-  </modules>
-</config>
+
+$installer = $this;
+$installer->startSetup();
+$installer->run("
+INSERT INTO {$this->getTable('core_email_template')} (`template_code`, `template_text`, `template_type`, `template_subject`, `template_sender_name`, `template_sender_email`, `added_at`, `modified_at`) VALUES
+('Contact Form', 'Name: {{var data.name}}\r\nE-mail: {{var data.email}}\r\nTelephone: {{var data.telephone}}\r\n\r\nComment: {{var data.comment}}', 1, 'Contact Form', NULL, NULL, NOW(), NOW());
+");
+$installer->setConfigData('ffuenf_contact/reasons', 'Reason One|Reason Two|Reason Three');
+$installer->endSetup();

@@ -39,11 +39,11 @@ License and Author
 
 - Copyright:: 2014, ffuenf
 
-Licensed under the Apache License, Version 3.0 (the "License");
-you may not use this file except in compliance with the License.
+Licensed under the Open Software License (OSL 3.0)
+you may not use these files except in compliance with the License.
 You may obtain a copy of the License at
 
-    http://www.apache.org/licenses/LICENSE-3.0
+    http://opensource.org/licenses/osl-3.0.php
 
 Unless required by applicable law or agreed to in writing, software
 distributed under the License is distributed on an "AS IS" BASIS,

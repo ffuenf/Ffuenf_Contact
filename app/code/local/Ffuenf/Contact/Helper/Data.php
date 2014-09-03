@@ -25,7 +25,11 @@
 * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
 */
 class Ffuenf_Contact_Helper_Data extends Mage_Core_Helper_Abstract {
+  
   const XML_PATH_ENABLED   = 'ffuenf_contact/contact/enabled';
+  const XML_PATH_CONTACTS_ROBOTS = 'ffuenf_contact/contact/robots';
+  const XML_PATH_CONTACTS_BREADCRUMB = 'Ffuenf_Contact';
+  
   public function isEnabled() {
     return Mage::getStoreConfig( self::XML_PATH_ENABLED );
   }
@@ -42,5 +46,11 @@ class Ffuenf_Contact_Helper_Data extends Mage_Core_Helper_Abstract {
     }
     $customer = Mage::getSingleton('customer/session')->getCustomer();
     return $customer->getEmail();
+  }
+  public function getContactsRobots() {
+    return Mage::getStoreConfig(self::XML_PATH_CONTACTS_ROBOTS);
+  }
+  public function getContactsBreadcrumb() {
+    return Mage::getStoreConfigFlag(self::XML_PATH_CONTACTS_BREADCRUMB);
   }
 }

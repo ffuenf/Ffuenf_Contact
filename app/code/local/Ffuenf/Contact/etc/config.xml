@@ -69,7 +69,20 @@
       <ffuenf_contact>
         <class>Ffuenf_Contact_Model</class>
       </ffuenf_contact>
+      <adminhtml>
+        <rewrite>
+          <system_config_source_design_robots>Ffuenf_Contact_Model_System_Config_Source_Design_Robots</system_config_source_design_robots>
+        </rewrite>
+      </adminhtml>
     </models>
+    <resources>
+      <ffuenf_contact_setup>
+        <setup>
+          <module>Ffuenf_Contact</module>
+          <class>Ffuenf_Contact_Model_Resource_Setup</class>
+        </setup>
+      </ffuenf_contact_setup>
+    </resources>
     <blocks>
       <ffuenf_contact>
         <class>Ffuenf_Contact_Block</class>
@@ -85,6 +98,15 @@
           </ffuenf_contact_mungefields>
         </observers>
       </controller_action_predispatch_ffuenf_contact_index_post>
+      <controller_action_layout_render_before_ffuenf_contact_index_index>
+        <observers>
+          <ffuenf_contact_index_index>
+            <type>singleton</type>
+            <class>ffuenf_contact/observer</class>
+            <method>addRobotsTagToContacts</method>
+          </ffuenf_contact_index_index>
+        </observers>
+      </controller_action_layout_render_before_ffuenf_contact_index_index>
     </events>
     <resources>
       <ffuenf_contact_setup>
@@ -114,10 +136,18 @@
       </modules>
     </translate>
   </adminhtml>
+  <robots>
+    <index_follow>INDEX,FOLLOW</index_follow>
+    <noindex_follow>NOINDEX,FOLLOW</noindex_follow>
+    <index_nofollow>INDEX,NOFOLLOW</index_nofollow>
+    <noindex_nofollow>NOINDEX,NOFOLLOW</noindex_nofollow>
+  </robots>
   <default>
     <ffuenf_contact>
       <contact>
         <enabled>1</enabled>
+        <robots>INDEX,FOLLOW</robots>
+        <breadcrumb>1</breadcrumb>
       </contact>
       <email>
         <recipient_email><![CDATA[hello@example.com]]></recipient_email>
