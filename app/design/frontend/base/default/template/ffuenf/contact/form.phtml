@@ -29,16 +29,16 @@
 <div class="page-title">
   <h1><?= Mage::helper('ffuenf_contact')->__('Contact Us') ?></h1>
 </div>
+<?= $this->getLayout()->createBlock('cms/block')->setBlockId('ffuenf_contact')->toHtml(); ?>
 <form action="<?= $this->getFormAction(); ?>" id="contactForm" method="post">
   <div class="fieldset">
-    <h2 class="legend"><?= Mage::helper('ffuenf_contact')->__('Contact Information') ?></h2>
     <ul class="form-list">
       <li class="fields">
         <div class="field">
           <label for="reason"><?php echo Mage::helper('ffuenf_contact')->__('Reason') ?></label>
           <div class="input-box">
             <select name="reason" id="reason">
-              <option value="">(choose one)</option>
+              <option value=""><?= Mage::helper('ffuenf_contact')->__('(choose one)') ?></option>
               <?php foreach (Mage::helper('ffuenf_contact')->getReasons() as $reason) : ?>
                 <option value="<?php echo $this->htmlEscape($reason) ?>"><?php echo $this->htmlEscape($reason); ?></option>
               <?php endforeach; ?>
@@ -65,9 +65,9 @@
         </div>
       </li>
       <li class="wide">
-        <label for="comment" class="required"><em>*</em><?= Mage::helper('ffuenf_contact')->__('Comment') ?></label>
+        <label for="comment" class="required"><em>*</em><?= Mage::helper('ffuenf_contact')->__('Message') ?></label>
         <div class="input-box">
-          <textarea name="comment" id="comment" title="<?= Mage::helper('ffuenf_contact')->__('Comment') ?>" class="required-entry input-text" cols="5" rows="3"></textarea>
+          <textarea name="comment" id="comment" title="<?= Mage::helper('ffuenf_contact')->__('Message') ?>" class="required-entry input-text" cols="5" rows="3"></textarea>
         </div>
       </li>
     </ul>
