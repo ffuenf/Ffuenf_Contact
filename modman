@@ -1,0 +1,8 @@
+app/code/local/Ffuenf/Contact app/code/local/Ffuenf/Contact
+app/design/frontend/base/default/layout/ffuenf/contact.xml app/design/frontend/base/default/layout/ffuenf/contact.xml
+app/design/frontend/base/default/template/ffuenf/contact app/design/frontend/base/default/template/ffuenf/contact
+app/etc/modules/Ffuenf_Contact.xml app/etc/modules/Ffuenf_Contact.xml
+app/locale/en_US/Ffuenf_Contact.csv app/locale/en_US/Ffuenf_Contact.csv
+app/locale/en_US/template/email/contact_form.html app/locale/en_US/template/email/contact_form.html
+app/locale/de_DE/Ffuenf_Contact.csv app/locale/de_DE/Ffuenf_Contact.csv
+app/locale/de_DE/template/email/contact_form.html app/locale/de_DE/template/email/contact_form.html
