@@ -39,7 +39,7 @@
           <div class="input-box">
             <select name="reason" id="reason">
               <option value="">(choose one)</option>
-              <?php foreach ($this->getReasons() as $reason) : ?>
+              <?php foreach (Mage::helper('ffuenf_contact')->getReasons() as $reason) : ?>
                 <option value="<?php echo $this->htmlEscape($reason) ?>"><?php echo $this->htmlEscape($reason); ?></option>
               <?php endforeach; ?>
             </select>

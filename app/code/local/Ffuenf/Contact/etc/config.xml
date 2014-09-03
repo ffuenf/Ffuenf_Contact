@@ -83,11 +83,6 @@
         </setup>
       </ffuenf_contact_setup>
     </resources>
-    <blocks>
-      <ffuenf_contact>
-        <class>Ffuenf_Contact_Block</class>
-      </ffuenf_contact>
-    </blocks>
     <events>
       <controller_action_predispatch_ffuenf_contact_index_post>
         <observers>
@@ -149,6 +144,9 @@
         <robots>INDEX,FOLLOW</robots>
         <breadcrumb>1</breadcrumb>
       </contact>
+      <formfields>
+        <reasons>Reason One|Reason Two|Reason Three</reasons>
+      </formfields>
       <email>
         <recipient_email><![CDATA[hello@example.com]]></recipient_email>
         <sender_email_identity>custom2</sender_email_identity>

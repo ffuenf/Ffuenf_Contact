@@ -81,7 +81,7 @@
             </breadcrumb>
           </fields>
         </contact>
-        <fields translate="label">
+        <formfields translate="label">
           <label>Fields</label>
           <frontend_type>text</frontend_type>
           <sort_order>10</sort_order>
@@ -99,7 +99,7 @@
               <show_in_store>1</show_in_store>
             </reasons>
           </fields>
-        </fields>
+        </formfields>
         <email translate="label">
           <label>Email Options</label>
           <frontend_type>text</frontend_type>

@@ -47,6 +47,9 @@ class Ffuenf_Contact_Helper_Data extends Mage_Core_Helper_Abstract {
     $customer = Mage::getSingleton('customer/session')->getCustomer();
     return $customer->getEmail();
   }
+  public function getReasons() {
+    return explode('|', Mage::getStoreConfig('ffuenf_contact/formfields/reasons'));
+  }
   public function getContactsRobots() {
     return Mage::getStoreConfig(self::XML_PATH_CONTACTS_ROBOTS);
   }
