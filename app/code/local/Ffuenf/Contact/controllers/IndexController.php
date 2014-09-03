@@ -46,7 +46,6 @@ class Ffuenf_Contact_IndexController extends Mage_Core_Controller_Front_Action {
     $post = $this->getRequest()->getPost();
     if ( $post ) {
       $translate = Mage::getSingleton('core/translate');
-      /* @var $translate Mage_Core_Model_Translate */
       $translate->setTranslateInline(false);
       try {
         $postObject = new Varien_Object();
@@ -68,7 +67,6 @@ class Ffuenf_Contact_IndexController extends Mage_Core_Controller_Front_Action {
           throw new Exception();
         }
         $mailTemplate = Mage::getModel('core/email_template');
-        /* @var $mailTemplate Mage_Core_Model_Email_Template */
         $mailTemplate->setDesignConfig(array('area' => 'frontend'))->setReplyTo($post['email'])->sendTransactional(
           Mage::getStoreConfig(self::XML_PATH_EMAIL_TEMPLATE),
           Mage::getStoreConfig(self::XML_PATH_EMAIL_SENDER),

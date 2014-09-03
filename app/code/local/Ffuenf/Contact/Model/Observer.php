@@ -63,4 +63,58 @@ class Ffuenf_Contact_Model_Observer {
       $breadcrumbs->addCrumb('cms_page', array('label'=>$title, 'title'=>$title));
     }
   }
+  /**
+   * 
+   * @return Mage_Core_Model_Layout
+   */
+  protected function _getLayout() {
+    return Mage::app()->getLayout();
+  }
+  /**
+   * set Robots Tag in Response Header (HTTP/1.1)
+   * 
+   * @param string $value
+   */
+  public function _setRobotsHeader($value, $addToHtmlHead = true) {
+    if(empty($value)) {
+      $value = $this->_helper()->getDefaultRobots();
+    }
+    Mage::app()->getResponse()->setHeader('X-Robots-Tag', $value);
+    if($addToHtmlHead) {
+      $this->_getLayout()->getBlock('head')->setData('robots', $value);
+    }
+    return $this;
+  }
+  /**
+   * 
+   * @param string $value url
+   * @return Ffuenf_Contact_Model_Observer
+   */
+  public function _setCanonicalHeader($value, $addToHtmlHead = true) {
+    if(!empty($value)) {
+      $value = str_replace(array('?___SID=U', '&___SID=U'), '', $value);
+      $link = '<'.$value.'>; rel="canonical"';
+      Mage::app()->getResponse()->setHeader('Link', $link);
+      if($addToHtmlHead) {
+        $this->_getLayout()->getBlock('head')->addLinkRel('canonical', $value);
+      }
+    }
+    return $this;
+  }
+  /**
+   * 
+   * @return Ffuenf_Contact_Helper_Data
+   */
+  protected function _helper() {
+    return Mage::helper('ffuenf_contact');
+  }
+  /**
+   * 
+   * @param string $url
+   * @param array $params
+   */
+  public function getUrl($url, $params = array()) {
+    $params['_nosid'] = true;
+    return Mage::getUrl($url, $params);
+  }
 }
