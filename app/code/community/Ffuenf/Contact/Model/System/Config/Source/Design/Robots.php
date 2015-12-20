@@ -1,7 +1,6 @@
-<?xml version="1.0"?>
-<!--
+<?php
 /**
- * Ffuenf_Contact extension
+ * Ffuenf_Contact extension.
  *
  * NOTICE OF LICENSE
  *
@@ -15,17 +14,19 @@
  * @author     Achim Rosenhagen <a.rosenhagen@ffuenf.de>
  * @copyright  Copyright (c) 2015 ffuenf (http://www.ffuenf.de)
  * @license    http://opensource.org/licenses/mit-license.php MIT License
-*/
--->
-<config>
-    <modules>
-        <Ffuenf_Contact>
-            <active>true</active>
-            <codePool>community</codePool>
-            <depends>
-                <Ffuenf_Common />
-                <Aoe_LayoutConditions />
-            </depends>
-        </Ffuenf_Contact>
-    </modules>
-</config>
+ */
+
+class Ffuenf_Contact_Model_System_Config_Source_Design_Robots
+{
+    public function toOptionArray()
+    {
+        $items = array();
+        foreach((array)Mage::app()->getConfig()->getNode('robots') as $_row) {
+            $items[] = array(
+                'value' => $_row,
+                'label' => Mage::helper('ffuenf_contact')->__(str_replace(',', ', ', $_row))
+            );
+        }
+        return $items;
+    }
+}

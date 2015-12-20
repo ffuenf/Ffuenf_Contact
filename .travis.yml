@@ -1,0 +1,55 @@
+language: php
+sudo: false
+php:
+- 5.4
+- 5.5
+- 5.6
+- 7.0
+matrix:
+  fast_finish: true
+  allow_failures:
+  - env: MAGENTO_VERSION=magento-ce-1.9.1.1
+  - env: MAGENTO_VERSION=magento-ce-1.9.1.0
+  - php: 5.4
+    env: MAGENTO_VERSION=magento-ce-1.9.2.2
+  - php: 5.4
+    env: MAGENTO_VERSION=magento-ce-1.9.2.1
+  - php: 5.4
+    env: MAGENTO_VERSION=magento-ce-1.9.2.0
+  - php: 5.6
+    env: MAGENTO_VERSION=magento-mirror-1.8.1.0
+  - php: 7.0
+    env: MAGENTO_VERSION=magento-mirror-1.8.1.0
+env:
+  global:
+  - APPNAME=Ffuenf_Contact
+  - secure: HVK1tigwQvTc7IEIRnIFno9XQbc2/mmQTzgaSEB+0IceO3di/j4sI1ZUH0tVIsly3FekfGjn+sEKVMIMVAxAWvJ3JF/PBIOxtJnk3lVL8iBDO2IglISBPi7yWh9zYK1Cwo40doHXtpTf8/2+gKdbydE9mK3CJtrW0SKsI9oW7Ds=
+  - secure: IZqN2h40HLGewAdv8JKQ4z/6CbrP55fmE6iUyggHcph2JDw9DNkOwkjwxfaxvCEtnulPq0hqh6SpsczPjMFb8bR40l9veJiZzIhob0olEnU8LSpqB8qaSrREIkTpkxiNzvfhywpl8Jr2MK5QG1QVI+qWS6cVdIL71GNxFVeT9WA=
+  matrix:
+  - MAGENTO_VERSION=magento-ce-1.9.2.2
+  - MAGENTO_VERSION=magento-ce-1.9.1.1
+  - MAGENTO_VERSION=magento-mirror-1.8.1.0
+  - MAGENTO_VERSION=magento-mirror-1.7.0.2
+  - MAGENTO_VERSION=magento-mirror-1.6.2.0
+before_script:
+- composer self-update
+- composer install --prefer-source
+script:
+- curl -sSL https://raw.githubusercontent.com/ffuenf/MageTestStand/master/setup.sh
+  | bash
+before_deploy:
+- gem install mime-types -v 2.6.2
+deploy:
+  provider: releases
+  file:
+  - "${APPNAME}-${TRAVIS_TAG}.zip"
+  - "${APPNAME}-${TRAVIS_TAG}.tar.gz"
+  skip_cleanup: true
+  on:
+    branch: master
+    tags: true
+  api_key:
+    secure: MreW5GohAt/zvOX8G+Cd8lmlJecjUrtSiZDFMNjJYmvS+7ndEj7QAob72/Bhy2jJAXBTvpQ3RsT6lsufmw5zkbldNM37dwbmWEPAUPKSR9NcMAC78VVKtpT5xUc2Xd4D65R/ffObeidLh0biSIEtC+dYk8WtWFejRC29eMPaDAQ=
+notifications:
+  slack:
+    secure: ekS3SDOx1f5jk2WIjbfhgmroW1Z4DHMC1h5OW3zAUoJUekB9Bejis9hVAGEZfBq+ZG3xv3CI8TwvyN7kAmB9Sqf3IZuFBmH/qfoeMYTjw1PQdUqGKu9MaGdVsTzSLct5TqXEyNNMCjmh0YJLPk+26XfFkV3ZtKg63PoNNZUtmlA=
