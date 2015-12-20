@@ -20,7 +20,7 @@
 <config>
     <modules>
         <Ffuenf_Contact>
-            <version>1.0.0</version>
+            <version>1.1.0</version>
         </Ffuenf_Contact>
     </modules>
     <frontend>
