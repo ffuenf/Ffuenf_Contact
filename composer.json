@@ -11,8 +11,7 @@
   "type": "magento-module",
   "require": {
     "Ffuenf/Ffuenf_Common": "*",
-    "Ffuenf/Ffuenf_MageTrashApp": "*",
-    "fbrnc/Aoe_LayoutConditions": "*"
+    "Ffuenf/Ffuenf_MageTrashApp": "*"
   },
   "require-dev": {
     "aoepeople/composer-installers": "*"
@@ -29,10 +28,6 @@
     {
       "type": "vcs",
       "url": "https://github.com/ffuenf/Ffuenf_MageTrashApp"
-    },
-    {
-      "type": "vcs",
-      "url": "https://github.com/fbrnc/Aoe_LayoutConditions"
     }
   ]
 }

@@ -24,7 +24,6 @@
             <codePool>community</codePool>
             <depends>
                 <Ffuenf_Common />
-                <Aoe_LayoutConditions />
             </depends>
         </Ffuenf_Contact>
     </modules>
