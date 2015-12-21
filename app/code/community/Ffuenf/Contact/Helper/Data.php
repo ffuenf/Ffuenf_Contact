@@ -39,6 +39,9 @@ class Ffuenf_Contact_Helper_Data extends Ffuenf_Common_Helper_Core
         return $this->getStoreFlag(self::CONFIG_EXTENSION_ACTIVE, 'bExtensionActive');
     }
 
+    /**
+     * @return string
+     */
     public function getUserName()
     {
         if (!Mage::getSingleton('customer/session')->isLoggedIn()) {
@@ -48,6 +51,9 @@ class Ffuenf_Contact_Helper_Data extends Ffuenf_Common_Helper_Core
         return trim($customer->getName());
     }
 
+    /**
+     * @return string
+     */
     public function getUserEmail()
     {
         if (!Mage::getSingleton('customer/session')->isLoggedIn()) {
@@ -57,6 +63,9 @@ class Ffuenf_Contact_Helper_Data extends Ffuenf_Common_Helper_Core
         return $customer->getEmail();
     }
 
+    /**
+     * @return string
+     */
     public function getReasons()
     {
         return explode('|', Mage::getStoreConfig('ffuenf_contact/formfields/reasons'));
@@ -70,6 +79,9 @@ class Ffuenf_Contact_Helper_Data extends Ffuenf_Common_Helper_Core
         return Mage::getStoreConfig(self::XML_PATH_CONTACTS_ROBOTS);
     }
 
+    /**
+     * @return bool
+     */
     public function getContactsBreadcrumb()
     {
         return Mage::getStoreConfigFlag(self::XML_PATH_CONTACTS_BREADCRUMB);

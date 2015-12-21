@@ -67,27 +67,27 @@ class Ffuenf_Contact_IndexController extends Mage_Core_Controller_Front_Action
                 }
                 $mailTemplate = Mage::getModel('core/email_template');
                 $mailTemplate->setDesignConfig(array('area' => 'frontend'))->setReplyTo($post['email'])->sendTransactional(
-                Mage::getStoreConfig(self::XML_PATH_EMAIL_TEMPLATE),
-                Mage::getStoreConfig(self::XML_PATH_EMAIL_SENDER),
-                Mage::getStoreConfig(self::XML_PATH_EMAIL_RECIPIENT),
-                null,
-                array('data' => $postObject)
-            );
-            if (!$mailTemplate->getSentSuccess()) {
-                throw new Exception();
+                    Mage::getStoreConfig(self::XML_PATH_EMAIL_TEMPLATE),
+                    Mage::getStoreConfig(self::XML_PATH_EMAIL_SENDER),
+                    Mage::getStoreConfig(self::XML_PATH_EMAIL_RECIPIENT),
+                    null,
+                    array('data' => $postObject)
+                );
+                if (!$mailTemplate->getSentSuccess()) {
+                    throw new Exception();
+                }
+                $translate->setTranslateInline(true);
+                Mage::getSingleton('customer/session')->addSuccess(Mage::helper('ffuenf_contact')->__('Your inquiry was submitted and will be responded to as soon as possible. Thank you for contacting us.'));
+                $this->_redirect('*/*/');
+                return;
+            } catch (Exception $e) {
+                $translate->setTranslateInline(true);
+                Mage::getSingleton('customer/session')->addError(Mage::helper('ffuenf_contact')->__('Unable to submit your request. Please, try again later'));
+                $this->_redirect('*/*/');
+                return;
             }
-            $translate->setTranslateInline(true);
-            Mage::getSingleton('customer/session')->addSuccess(Mage::helper('ffuenf_contact')->__('Your inquiry was submitted and will be responded to as soon as possible. Thank you for contacting us.'));
+        } else {
             $this->_redirect('*/*/');
-            return;
-        } catch (Exception $e) {
-            $translate->setTranslateInline(true);
-            Mage::getSingleton('customer/session')->addError(Mage::helper('ffuenf_contact')->__('Unable to submit your request. Please, try again later'));
-            $this->_redirect('*/*/');
-            return;
         }
-    } else {
-        $this->_redirect('*/*/');
     }
-}
 }

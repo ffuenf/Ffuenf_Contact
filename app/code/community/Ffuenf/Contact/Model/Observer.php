@@ -22,20 +22,10 @@ class Ffuenf_Contact_Model_Observer
     * The indexPostPredispatch observer intercepts the post request object
     * before the post action is called. It then munges the additional reason
     * field into the comment field.
-    *
-    * @param type $observer
     */
-    public function indexPostPredispatch($observer)
+    public function indexPostPredispatch()
     {
         $request = Mage::app()->getRequest();
-        $salutation = $request->getPost('salutation');
-        $name = $request->getPost('name');
-        $lastname = $request->getPost('lastname');
-        $street = $request->getPost('street');
-        $streetnumber = $request->getPost('streetnumber');
-        $zip = $request->getPost('zip');
-        $city = $request->getPost('city');
-        $telephone = $request->getPost('telephone');
         $message = $request->getPost('message');
         $request->setPost('comment', $message);
     }
@@ -44,10 +34,9 @@ class Ffuenf_Contact_Model_Observer
     * event: controller_action_layout_render_before_ . $this->getFullActionName();
     * in: Mage_Core_Controller_Varien_Action::renderLayout()
     * 
-    * @param $event Varien_Event_Observer
     * @return void
     */
-    public function addRobotsTagToContacts(Varien_Event_Observer $event)
+    public function addRobotsTagToContacts()
     {
         $this->_setRobotsHeader($this->_helper()->getContactsRobots());
         $this->_setCanonicalHeader($this->getUrl('contact'));
