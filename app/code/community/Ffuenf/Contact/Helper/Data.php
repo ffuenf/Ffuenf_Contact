@@ -62,6 +62,9 @@ class Ffuenf_Contact_Helper_Data extends Ffuenf_Common_Helper_Core
         return explode('|', Mage::getStoreConfig('ffuenf_contact/formfields/reasons'));
     }
 
+    /**
+     * @return string
+     */
     public function getContactsRobots()
     {
         return Mage::getStoreConfig(self::XML_PATH_CONTACTS_ROBOTS);

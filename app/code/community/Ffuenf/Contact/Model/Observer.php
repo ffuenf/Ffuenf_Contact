@@ -92,7 +92,7 @@ class Ffuenf_Contact_Model_Observer
     {
         if (!empty($value)) {
             $value = str_replace(array('?___SID=U', '&___SID=U'), '', $value);
-            $link = '<'.$value.'>; rel="canonical"';
+            $link = '<' . $value . '>; rel="canonical"';
             Mage::app()->getResponse()->setHeader('Link', $link);
             if ($addToHtmlHead) {
                 $this->_getLayout()->getBlock('head')->addLinkRel('canonical', $value);
@@ -114,6 +114,7 @@ class Ffuenf_Contact_Model_Observer
     * 
     * @param string $url
     * @param array $params
+    * @return string
     */
     public function getUrl($url, $params = array())
     {

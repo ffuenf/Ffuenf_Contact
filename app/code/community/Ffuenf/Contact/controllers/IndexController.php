@@ -26,7 +26,7 @@ class Ffuenf_Contact_IndexController extends Mage_Core_Controller_Front_Action
     public function preDispatch()
     {
         parent::preDispatch();
-        if( !Mage::getStoreConfigFlag(self::XML_PATH_ENABLED) ) {
+        if (!Mage::getStoreConfigFlag(self::XML_PATH_ENABLED)) {
             $this->norouteAction();
         }
     }
@@ -34,7 +34,7 @@ class Ffuenf_Contact_IndexController extends Mage_Core_Controller_Front_Action
     public function indexAction()
     {
         $this->loadLayout();
-        $this->getLayout()->getBlock('contactForm')->setFormAction( Mage::getUrl('*/*/post') );
+        $this->getLayout()->getBlock('contactForm')->setFormAction(Mage::getUrl('*/*/post'));
         $this->_initLayoutMessages('customer/session');
         $this->_initLayoutMessages('catalog/session');
         $this->renderLayout();
@@ -43,17 +43,17 @@ class Ffuenf_Contact_IndexController extends Mage_Core_Controller_Front_Action
     public function postAction()
     {
         $post = $this->getRequest()->getPost();
-        if ( $post ) {
+        if ($post) {
             $translate = Mage::getSingleton('core/translate');
             $translate->setTranslateInline(false);
             try {
                 $postObject = new Varien_Object();
                 $postObject->setData($post);
                 $error = false;
-                if (!Zend_Validate::is(trim($post['name']) , 'NotEmpty')) {
+                if (!Zend_Validate::is(trim($post['name']), 'NotEmpty')) {
                     $error = true;
                 }
-                if (!Zend_Validate::is(trim($post['comment']) , 'NotEmpty')) {
+                if (!Zend_Validate::is(trim($post['comment']), 'NotEmpty')) {
                     $error = true;
                 }
                 if (!Zend_Validate::is(trim($post['email']), 'EmailAddress')) {
