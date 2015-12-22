@@ -1,0 +1,157 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Ffuenf_Contact extension
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the MIT License
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/mit-license.php
+ *
+ * @category   Ffuenf
+ *
+ * @author     Achim Rosenhagen <a.rosenhagen@ffuenf.de>
+ * @copyright  Copyright (c) 2015 ffuenf (http://www.ffuenf.de)
+ * @license    http://opensource.org/licenses/mit-license.php MIT License
+*/
+-->
+<config>
+    <modules>
+        <Ffuenf_Contact>
+            <version>1.1.0</version>
+        </Ffuenf_Contact>
+    </modules>
+    <frontend>
+        <routers>
+            <ffuenf_contact>
+                <use>standard</use>
+                <args>
+                    <module>Ffuenf_Contact</module>
+                    <frontName>contact</frontName>
+                </args>
+            </ffuenf_contact>
+        </routers>
+        <layout>
+            <updates>
+                <ffuenf_contact>
+                    <file>ffuenf_contact.xml</file>
+                </ffuenf_contact>
+            </updates>
+        </layout>
+        <translate>
+            <modules>
+                <Ffuenf_Contact>
+                    <files>
+                        <default>Ffuenf_Contact.csv</default>
+                    </files>
+                </Ffuenf_Contact>
+            </modules>
+        </translate>
+    </frontend>
+    <global>
+        <helpers>
+            <ffuenf_contact>
+                <class>Ffuenf_Contact_Helper</class>
+            </ffuenf_contact>
+        </helpers>
+        <blocks>
+            <ffuenf_contact>
+                <class>Ffuenf_Contact_Block</class>
+            </ffuenf_contact>
+        </blocks>
+        <models>
+            <ffuenf_contact>
+                <class>Ffuenf_Contact_Model</class>
+            </ffuenf_contact>
+            <adminhtml>
+                <rewrite>
+                    <system_config_source_design_robots>Ffuenf_Contact_Model_System_Config_Source_Design_Robots</system_config_source_design_robots>
+                </rewrite>
+            </adminhtml>
+        </models>
+        <resources>
+            <ffuenf_contact_setup>
+                <setup>
+                    <module>Ffuenf_Contact</module>
+                </setup>
+            </ffuenf_contact_setup>
+        </resources>
+        <events>
+            <controller_action_predispatch_ffuenf_contact_index_post>
+                <observers>
+                    <ffuenf_contact_mungefields>
+                        <type>singleton</type>
+                        <class>ffuenf_contact/observer</class>
+                        <method>indexPostPredispatch</method>
+                    </ffuenf_contact_mungefields>
+                </observers>
+            </controller_action_predispatch_ffuenf_contact_index_post>
+            <controller_action_layout_render_before_ffuenf_contact_index_index>
+                <observers>
+                    <ffuenf_contact_index_index>
+                        <type>singleton</type>
+                        <class>ffuenf_contact/observer</class>
+                        <method>addRobotsTagToContacts</method>
+                    </ffuenf_contact_index_index>
+                </observers>
+            </controller_action_layout_render_before_ffuenf_contact_index_index>
+        </events>
+        <resources>
+            <ffuenf_contact_setup>
+                <setup>
+                    <module>Ffuenf_Contact</module>
+                </setup>
+            </ffuenf_contact_setup>
+        </resources>
+        <template>
+            <email>
+                <ffuenf_contact_email_email_template translate="label" module="ffuenf_contact">
+                    <label>Contact Form</label>
+                    <file>contact_form.html</file>
+                    <type>text</type>
+                </ffuenf_contact_email_email_template>
+            </email>
+        </template>
+    </global>
+    <adminhtml>
+        <translate>
+            <modules>
+                <Ffuenf_Contact>
+                    <files>
+                        <default>Ffuenf_Contact.csv</default>
+                    </files>
+                </Ffuenf_Contact>
+            </modules>
+        </translate>
+    </adminhtml>
+    <robots>
+        <index_follow>INDEX,FOLLOW</index_follow>
+        <noindex_follow>NOINDEX,FOLLOW</noindex_follow>
+        <index_nofollow>INDEX,NOFOLLOW</index_nofollow>
+        <noindex_nofollow>NOINDEX,NOFOLLOW</noindex_nofollow>
+    </robots>
+    <uninstall>
+        <filename>uninstall.txt</filename>
+    </uninstall>
+    <default>
+        <ffuenf_contact>
+            <general>
+                <enable>1</enable>
+            </general>
+            <contact>
+                <robots>INDEX,FOLLOW</robots>
+                <breadcrumb>1</breadcrumb>
+            </contact>
+            <formfields>
+                <reasons>Reason One|Reason Two|Reason Three</reasons>
+            </formfields>
+            <email>
+                <recipient_email><![CDATA[hello@example.com]]></recipient_email>
+                <sender_email_identity>custom2</sender_email_identity>
+                <email_template>ffuenf_contact_email_email_template</email_template>
+            </email>
+        </ffuenf_contact>
+    </default>
+</config>
