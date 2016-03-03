@@ -20,7 +20,7 @@ Platform
 
 The following versions are supported and tested:
 
-* Magento Community Edition 1.9.2.2
+* Magento Community Edition 1.9.2.4
 * Magento Community Edition 1.9.1.1
 * Magento Community Edition 1.8.1.0
 * Magento Community Edition 1.7.0.2
@@ -84,22 +84,11 @@ Development
 5. Push your changes to GitHub
 6. Open a Pull Request
 
-Testing
--------
-This extension comes with a minimum setup of unit tests which are the base for the [travis] build status.
-See app/code/local/<Namespace>/<Extension>/Test for more information.
-
-Demo
-----
-You may spin up your own local virtualbox VM by running `vagrant up` from within the project directory.
-This will setup a current magento installation with the minimum settings for the extension to work.
-See the `Vagrantfile` for more information.
-
 License and Author
 ------------------
 
 - Author:: Achim Rosenhagen (<a.rosenhagen@ffuenf.de>)
-- Copyright:: 2015, ffuenf
+- Copyright:: 2016, ffuenf
 
 The MIT License (MIT)
 
